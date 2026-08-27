@@ -24,8 +24,61 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       text-align: center;
       padding: 2rem;
+      position: relative;
+      overflow: hidden;
     }
-    main { max-width: 640px; }
+    .bg-blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.55;
+      z-index: 0;
+      will-change: transform;
+    }
+    .bg-blob.one {
+      width: 45vmax;
+      height: 45vmax;
+      top: -15vmax;
+      left: -10vmax;
+      background: #6ea8fe;
+      animation: float1 18s ease-in-out infinite;
+    }
+    .bg-blob.two {
+      width: 40vmax;
+      height: 40vmax;
+      bottom: -15vmax;
+      right: -10vmax;
+      background: #b06efe;
+      animation: float2 22s ease-in-out infinite;
+    }
+    .bg-blob.three {
+      width: 30vmax;
+      height: 30vmax;
+      top: 40%;
+      left: 50%;
+      background: #6efeb0;
+      animation: float3 26s ease-in-out infinite;
+    }
+    @keyframes float1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(8vw, 6vh) scale(1.15); }
+    }
+    @keyframes float2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-6vw, -8vh) scale(1.1); }
+    }
+    @keyframes float3 {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-45%, -55%) scale(1.2); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .bg-blob { animation: none; }
+    }
+    main {
+      max-width: 640px;
+      position: relative;
+      z-index: 1;
+    }
     h1 {
       font-size: clamp(2rem, 5vw, 3rem);
       margin-bottom: 0.5rem;
@@ -50,6 +103,9 @@
   </style>
 </head>
 <body>
+  <div class="bg-blob one"></div>
+  <div class="bg-blob two"></div>
+  <div class="bg-blob three"></div>
   <main>
     <h1>Hi, I'm Samuel 👋</h1>
     <p>Welcome to my corner of the web. This site is hosted for free with GitHub Pages.</p>
