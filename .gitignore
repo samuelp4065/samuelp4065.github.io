@@ -1,9 +1,6 @@
 # Personal documents — keep local, not published to the public site
 *.pdf
 
-# Original full-size photos (the downscaled avatar.jpg is committed instead)
-IMG_*.jpg
-
 # Local tooling notes
 CLAUDE.md
 

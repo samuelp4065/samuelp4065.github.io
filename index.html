@@ -88,23 +88,58 @@
       font-size: 1.1rem;
       line-height: 1.6;
     }
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
     .links {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       display: flex;
-      gap: 1.5rem;
+      gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
     }
-    .avatar {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
+    .links a {
+      /* min-height keeps every button at a comfortable 48px tap target */
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
+      padding: 0.85rem 1.75rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--fg);
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.15s ease, background 0.15s ease,
+                  border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .links a:hover {
+      color: #0f1115;
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(110, 168, 254, 0.45);
+    }
+    /* pressed state: sinks in and loses the glow so a click is unmistakable */
+    .links a:active {
+      transform: translateY(1px) scale(0.97);
+      background: #4a8bec;
+      border-color: #4a8bec;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4) inset;
+    }
+    .links a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .links a { transition: none; }
+      .links a:hover { transform: none; }
+      .links a:active { transform: none; }
+    }
+    .photo {
+      width: min(260px, 70vw);
+      height: auto;
+      border-radius: 16px;
       border: 3px solid var(--accent);
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
       margin-bottom: 1.5rem;
@@ -116,7 +151,7 @@
   <div class="bg-blob two"></div>
   <div class="bg-blob three"></div>
   <main>
-    <img class="avatar" src="avatar.jpg" alt="Photo of Samuel Park" width="160" height="160">
+    <img class="photo" src="graduation.jpg" alt="Photo of Samuel Park">
     <h1>Hi, I'm Samuel 👋</h1>
     <p>Electrical engineer and Virginia Tech grad focused on controls, robotics, and autonomy. I love building things at the intersection of computer vision, object detection, and autonomous robots &mdash; from AI-agent-driven machines to human-following robots.</p>
     <div class="links">
